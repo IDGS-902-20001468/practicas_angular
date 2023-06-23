@@ -1,0 +1,68 @@
+<div class="contenedor mt-4">
+
+<h4 class="text-primary">Color 1:</h4>
+<mat-form-field>
+  <mat-label>Choose an option</mat-label>
+
+  <select matNativeControl name="c1" [(ngModel)]="c1Seleccionado">
+    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+      {{op}}
+    </option>
+  </select>
+</mat-form-field>
+
+<h4 class="text-primary">Color 2:</h4>
+<mat-form-field>
+  <mat-label>Choose an option</mat-label>
+
+  <select matNativeControl name="c1" [(ngModel)]="c2Seleccionado">
+    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+      {{op}}
+    </option>
+  </select>
+</mat-form-field>
+
+<h4 class="text-primary">Color 3:</h4>
+<mat-form-field>
+  <mat-label>Choose an option</mat-label>
+
+  <select matNativeControl name="c1" [(ngModel)]="c3Seleccionado">
+    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+      {{op}}
+    </option>
+  </select>
+</mat-form-field>
+<br>
+<mat-radio-group name="radio" [(ngModel)]="radSeleccionado">
+  <mat-radio-button *ngFor="let op of radioOpciones" name="radio" [value]="op"  style="margin: 10px">
+    {{op}}
+  </mat-radio-button>
+</mat-radio-group>
+
+</div><br>
+<button (click)="calcularVar()" mat-raised-button color="primary">Calcular</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>C1</th>
+      <th>C2</th>
+      <th>C3</th>
+      <th>var</th>
+      <th>valor +</th>
+      <th>valor -</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td [ngStyle]="{'background-color': c1}">{{c1Seleccionado}}</td>
+      <td [ngStyle]="{'background-color': c2}">{{c2Seleccionado}}</td>
+      <td [ngStyle]="{'background-color': c3}">{{c3Seleccionado}}</td>
+      <td>{{valor}}</td>
+      <td>{{valorp}}</td>
+      <td>{{valorn}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
