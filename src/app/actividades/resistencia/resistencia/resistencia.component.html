@@ -4,8 +4,9 @@
 <mat-form-field>
   <mat-label>Choose an option</mat-label>
 
-  <select matNativeControl name="c1" [(ngModel)]="c1Seleccionado">
-    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+  <select matNativeControl name="c1" [(ngModel)]="c1Seleccionado" (change)="calcularVar()">
+    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px"
+    [style.background-color]="op">
       {{op}}
     </option>
   </select>
@@ -15,8 +16,9 @@
 <mat-form-field>
   <mat-label>Choose an option</mat-label>
 
-  <select matNativeControl name="c1" [(ngModel)]="c2Seleccionado">
-    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+  <select matNativeControl name="c1" [(ngModel)]="c2Seleccionado" (change)="calcularVar()">
+    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px"
+    [style.background-color]="op">
       {{op}}
     </option>
   </select>
@@ -26,14 +28,15 @@
 <mat-form-field>
   <mat-label>Choose an option</mat-label>
 
-  <select matNativeControl name="c1" [(ngModel)]="c3Seleccionado">
-    <option *ngFor="let op of colores" name="c1" [value]="op"  style="margin: 10px">
+  <select matNativeControl name="c2" [(ngModel)]="c3Seleccionado" (change)="calcularVar()">
+    <option *ngFor="let op of colores" name="c2" [value]="op"  style="margin: 10px"
+    [style.background-color]="op">
       {{op}}
     </option>
   </select>
 </mat-form-field>
 <br>
-<mat-radio-group name="radio" [(ngModel)]="radSeleccionado">
+<mat-radio-group name="radio" [(ngModel)]="radSeleccionado" (change)="calcularVar()">
   <mat-radio-button *ngFor="let op of radioOpciones" name="radio" [value]="op"  style="margin: 10px">
     {{op}}
   </mat-radio-button>
@@ -55,9 +58,9 @@
   </thead>
   <tbody>
     <tr>
-      <td [ngStyle]="{'background-color': c1}">{{c1Seleccionado}}</td>
-      <td [ngStyle]="{'background-color': c2}">{{c2Seleccionado}}</td>
-      <td [ngStyle]="{'background-color': c3}">{{c3Seleccionado}}</td>
+      <td [ngStyle]="{'background-color': c1Seleccionado}">{{v1}}</td>
+      <td [ngStyle]="{'background-color': c2Seleccionado}">{{v2}}</td>
+      <td [ngStyle]="{'background-color': c3Seleccionado}">{{v3}}</td>
       <td>{{valor}}</td>
       <td>{{valorp}}</td>
       <td>{{valorn}}</td>
