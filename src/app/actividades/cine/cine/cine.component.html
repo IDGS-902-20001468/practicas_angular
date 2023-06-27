@@ -1,0 +1,39 @@
+<div class="contenedor">
+
+<h2>Cine</h2>
+  <div class="form-group mt-2">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" class="form-control" [(ngModel)]="cine.nombre" name="nombre">
+  </div>
+
+  <div class="form-group mt-2">
+    <label for="numero_bol">Número de boletos</label>
+    <input type="number" id="numero_bol" class="form-control" [(ngModel)]="cine.numero_bol" name="numero_bol">
+  </div>
+
+  <div class="form-group mt-2">
+    <label for="numero_compradores">Número de compradores</label>
+    <input type="number" id="numero_compradores" class="form-control" [(ngModel)]="cine.numero_compradores" name="numero_compradores">
+  </div>
+
+  <div class="form-group mt-2">
+    <label>Tarjeta</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" name="tarjeta" [(ngModel)]="cine.tarjeta" value='si'>
+      <label class="form-check-label">Si</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" name="tarjeta" [(ngModel)]="cine.tarjeta" value='no'>
+      <label class="form-check-label">No</label>
+    </div>
+  </div>
+
+  <div class="form-group mt-2">
+    <button (click)="calcular()"  class="btn btn-primary rounded-pill">Comprar</button>
+  </div>
+
+
+  <div class="form-group">
+    <h3>{{cine.resultado}}</h3>
+  </div>
+</div>
