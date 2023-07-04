@@ -49,15 +49,19 @@ export class ResistenciaComponent {
 
   calcular() {
     switch (this.radSeleccionado) {
-      case 'plata' : this.valorp = this.valor + (this.valor*0.05)
-      this.valorn = this.valor - (this.valor*0.05)
-      this.radSeleccionado = 'silver';
-      this.v4 = '5 %'
-                    break;
-      case 'oro' : this.valorp = this.valor + (this.valor*0.1)
+      case 'plata' :
+
+      this.valorp = this.valor + (this.valor*0.1)
       this.valorn = this.valor - (this.valor*0.1)
-      this.radSeleccionado = 'gold';
+      this.radSeleccionado = 'silver';
       this.v4 = '10 %'
+                    break;
+      case 'oro' :
+      this.valorp = this.valor + (this.valor*0.05)
+      this.valorn = this.valor - (this.valor*0.05)
+
+      this.radSeleccionado = 'gold';
+      this.v4 = '5 %'
                      break;
     }
   }

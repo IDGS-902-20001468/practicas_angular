@@ -1,0 +1,153 @@
+<h1 class="mt-4">Pizzeria</h1>
+<div class="row">
+  <div class="col-12">
+
+    <form [formGroup]="pizzasForm" (ngSubmit)="agregarDetalle()" >
+      <div class="row">
+      <div class="mb-4 col-4">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" id="nombre" class="form-control" required formControlName="nombre" name="nombre">
+      </div>
+      <div *ngIf="pizzasForm.get('nombre')?.touched && pizzasForm.get('nombre')?.errors?.['required']" class="alert alert-danger">Este Campo es requerido</div>
+
+      <div class="mb-4 col-4">
+        <label for="direccion" class="form-label">Dirección:</label>
+        <input type="text" id="direccion" class="form-control" required formControlName="direccion" name="direccion">
+      </div>
+      <div *ngIf="pizzasForm.get('direccion')?.touched && pizzasForm.get('direccion')?.errors?.['required']" class="alert alert-danger">Este Campo es requerido</div>
+
+      <div class="mb-4 col-4">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <input type="text" id="telefono" class="form-control" required formControlName="telefono" name="telefono">
+      </div>
+      <div *ngIf="pizzasForm.get('telefono')?.touched && pizzasForm.get('telefono')?.errors?.['required']" class="alert alert-danger">Este Campo es requerido</div>
+
+      <div class="mb-4 col-4">
+        <label class="form-label">Tamaño:</label>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="tamanio" value="Chica"> Chica
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="tamanio" value="Mediana"> Mediana
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" formControlName="tamanio" value="Grande"> Grande
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-4 col-4">
+        <label for="ingredientes" class="form-label">Ingredientes:</label>
+        <div formArrayName="ingredientes">
+          <div *ngFor="let ingrediente of ingredientes; let i=index">
+            <label class="form-check-label">
+              <input type="checkbox" [formControlName]="i" [value]="ingrediente">{{ingrediente}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="mb-4 col-4">
+        <label for="cantidad" class="form-label">Cantidad:</label>
+        <input type="text" id="cantidad" class="form-control" required formControlName="cantidad" name="cantidad">
+      </div>
+      <div *ngIf="pizzasForm.get('cantidad')?.touched && pizzasForm.get('cantidad')?.errors?.['required']" class="alert alert-danger">Este Campo es requerido</div>
+
+      <div class="mb-4 col-4">
+        <label for="fecha" class="form-label">Fecha: </label> {{today}}
+      </div>
+    </div>
+      <div class="gap-2 col-auto float-start">
+        <button class="btn btn-success btn-md" type="submit">Agregar</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-6 mt-4">
+    <h1>Detalle del pedido</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ingredientes</th>
+          <th>Tamaño</th>
+          <th>Numero de Pizzas</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="mx-2">
+        <tr *ngFor="let pedido of dp; let i = index">
+          <td>{{pedido.ingredientes}}</td>
+          <td>{{pedido.tamanio}}</td>
+          <td>{{pedido.cantidad}}</td>
+          <td>{{pedido.subTotal}}</td>
+          <td><button class="btn btn-danger" (click)="eliminarDetalle(i)">Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="gap-2 col-auto float-start">
+      <button class="btn btn-primary btn-md" type="button" (click)="calcularTotal()">Finalizar </button>
+    </div>
+  </div>
+  <div class="col-6 mt-4" *ngIf="mostrarTabla">
+    <h1>Ventas del dia</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Fecha</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody class="mx-2">
+        <tr *ngFor="let pedido of listaPedidos ">
+            <td>{{ pedido.cliente.nombre }}</td>
+            <td>{{ pedido.cliente.direccion }}</td>
+            <td>{{ pedido.cliente.telefono }}</td>
+            <td>{{ pedido.fecha }}</td>
+            <td>{{ pedido.total }} MXN</td>
+        </tr>
+        <th>Total del dia: {{sumaTotal}}</th>
+      </tbody>
+    </table>
+  </div>
+  <!-- <h1>Listado de Pedidos</h1>
+  <div>
+    <label for="filter">Filtrar por:</label>
+    <input type="text" id="filter" [(ngModel)]="filterValue" name="filter">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Fecha</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of listaPedidos | pedidoFilter: filterValue">
+          <td>{{ pedido.cliente.nombre }}</td>
+          <td>{{ pedido.cliente.direccion }}</td>
+          <td>{{ pedido.cliente.telefono }}</td>
+          <td>{{ pedido.fecha }}</td>
+          <td>{{ pedido.total }} MXN</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+
+
+
+
+
+</div>
